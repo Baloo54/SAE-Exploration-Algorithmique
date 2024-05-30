@@ -1,41 +1,47 @@
 package algorithme;
 /**
- * 
+ * Classe qui permet de résoudre un graphe en utilisant l'algorithme de Bellman-Ford
  * @author Thomas
  * @author Gabriel
- * 
+ * @version 1.0
  */
 public class BellmanFord 
 {
     /**
      * 
-     * @param g
-     * @param depart
-     * @return
+     * @param g graphe
+     * @param depart point de départ
+     * @return Valeur
      * 
      * Méthode qui à partir d'un graphe et un point de départ,
-     * va retourner le point fixe du plus court chemin de ce même graphe en utilisant l'algorithme de Bellman-Ford
+     * va retourner le point fixe du plus court chemin de ce même
+     *  graphe en utilisant l'algorithme de Bellman-Ford
      */
     public Valeur resoudre(Graphe g, String depart)
     {
         Valeur v = new Valeur();
-
+        //Initialisation des valeurs de v
+        // toutes les valeurs sont à +infini sauf le départ qui est à 0
         for(String s : g.listNoeuds())
         {
             v.setValeur(s, Double.MAX_VALUE);
             v.setParent(s, null);
         }
-
         v.setValeur(depart,0);
 
         boolean b = true;
+        //tant qu'il y a des changements
         while(b)
         {   
             b=false;
+            //pour chaque noeud
             for(String s : g.listNoeuds())
             {
+                //pour chaque arc partant de ce noeud
                 for(Arc arc : g.suivants(s))
                 {
+                    //si la valeur du noeud de destination est plus grande que la valeur du noeud de départ 
+                    // + le coût de l'arc
                     if(v.getValeur(s) + arc.getCout() < v.getValeur(arc.getDest()))
                     {
                         v.setValeur(arc.getDest(), v.getValeur(s)+arc.getCout());
@@ -45,7 +51,6 @@ public class BellmanFord
                 }
             }
         }
-
         return v;
     }
 }
