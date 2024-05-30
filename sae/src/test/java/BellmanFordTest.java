@@ -1,4 +1,8 @@
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import algorithme.*;
 /**
@@ -36,10 +40,19 @@ public class BellmanFordTest
         assertEquals(66,v.getValeur("D"));
         assertEquals(23,v.getValeur("E"));
         assertEquals(null, v.getParent("A"));
+        //test des parents
         assertEquals("A", v.getParent("B"));
         assertEquals("D", v.getParent("C"));
         assertEquals("E", v.getParent("D"));
         assertEquals("B", v.getParent("E"));
+        //test du backtracking
+        List<String> chemin = new ArrayList<>();
+        chemin.add("C");
+        chemin.add("D");
+        chemin.add("E");
+        chemin.add("B");
+        chemin.add("A");
+        assertEquals(chemin, v.chemin("C"));
     }
 }
 
