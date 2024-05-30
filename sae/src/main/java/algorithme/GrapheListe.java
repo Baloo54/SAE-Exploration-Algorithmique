@@ -46,8 +46,11 @@ public class GrapheListe implements Graphe
     {    
         Arcs arcs = new Arcs();
         Arc arc = new Arc(destination, cout);
+        // on ajoute l'arc a la liste des arcs
         arcs.ajouterArc(arc);
+        // on ajoute le noeud a la liste des noeuds
         this.noeuds.add(depart!=null ? depart : null);
+        // on ajoute les arcs a la liste des arcs
         this.adjacence.add(getIndice(depart),arcs);
     }
     /**
@@ -73,6 +76,26 @@ public class GrapheListe implements Graphe
         for(int i=0; i<this.noeuds.size(); i++)
         {
             res.add(this.noeuds.get(i));
+        }
+        return res;
+    }
+    /**
+     * toString du graphe
+     * @return le graphe
+     */
+    public String toString()
+    {
+        String res = "";
+        // on parcourt la liste des noeuds
+        for(int i=0; i<this.noeuds.size(); i++)
+        {
+            res += this.noeuds.get(i) + " -> ";
+            // on parcourt la liste des arcs
+            for(int j=0; j<this.adjacence.get(i).getArcs().size(); j++)
+            {
+                res += this.adjacence.get(i).getArcs().get(j).toString() + " ";
+            }
+            res += "\n";
         }
         return res;
     }
