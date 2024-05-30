@@ -37,4 +37,18 @@ public class Arcs
     {
         return this.arcs;
     }
+    /**
+     * méthode equals
+     * @param o l'objet a comparer
+     * @return true si les objets sont égaux, false sinon
+     */
+    public boolean equals(Object o)
+    {
+        if(o instanceof Arcs)
+        {
+            Arcs a = (Arcs) o;
+            return this.arcs.equals(a.getArcs());
+        }
+        return false;
+    }
 }
