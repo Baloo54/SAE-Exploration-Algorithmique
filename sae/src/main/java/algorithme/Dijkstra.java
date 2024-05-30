@@ -2,7 +2,7 @@ package algorithme;
 
 import java.util.ArrayList;
 
-public class Dijkstra 
+public class Dijkstra implements Algorithme
 {
     /**
      * Entrées :
@@ -43,7 +43,7 @@ public class Dijkstra
      * @param g
      * @param depart
      * 
-     * 
+     * Recherhce du plus court chemin en utilisant L'Algorithme de Bellman-Ford
      */
     public Valeur resoudre(Graphe g, String depart)
     {   
@@ -84,10 +84,10 @@ public class Dijkstra
     }
 
     /**
-     * 
      * @param noeuds
      * @param v
      * @return
+     * Cherche l'arête la plus courte vers un voisin d'un sommet encore non traité
      */
     public String getMini(ArrayList<String> noeuds, Valeur v)
     {
