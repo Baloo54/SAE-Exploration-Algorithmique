@@ -27,4 +27,32 @@ public class Arc
         // on ne veut pas de cout negatif
         this.cout = c < 0 ? -c : c;
     }
+    /**
+     * getter de la destination
+     * @return la destination
+     */
+    public String getDest() {
+        return dest;
+    }
+    /**
+     * setter de la destination
+     * @param dest la destination
+     */
+    public void setDest(String dest) {
+        this.dest = dest;
+    }
+    /**
+     * getter du cout
+     * @return le cout
+     */
+    public double getCout() {
+        return cout;
+    }
+    /**
+     * setter du cout
+     * @param cout le cout
+     */
+    public void setCout(double cout) {
+        this.cout = cout;
+    }
 }
