@@ -54,5 +54,55 @@ public class BellmanFordTest
         chemin.add("A");
         assertEquals(chemin, v.chemin("C"));
     }
+    //test numéro 2 avec graphe du cours
+    @Test
+    public void testResoudre2(){
+        GrapheListe graphe = new GrapheListe();
+        //ajout des arcs
+        graphe.ajouterArc("A", "B", 1);
+        graphe.ajouterArc("E", "B", 2);
+        graphe.ajouterArc("E", "F", 1);
+        graphe.ajouterArc("B", "C", 3);
+        graphe.ajouterArc("B", "G", 4);
+        graphe.ajouterArc("B", "D", 5);
+        graphe.ajouterArc("F", "c", 5);
+        graphe.ajouterArc("F", "G", 3);
+        graphe.ajouterArc("F", "H", 3);
+        graphe.ajouterArc("C", "H", 2);
+        graphe.ajouterArc("C", "D", 3);
+        graphe.ajouterArc("G", "I", 5);
+        graphe.ajouterArc("H", "I", 4);
+        graphe.ajouterArc("D", "I", 2);
+        //création d'un objet BellmanFord
+        BellmanFord bf = new BellmanFord();
+        //résolution du graphe
+        Valeur v = new Valeur();
+        v=bf.resoudre(graphe,"A");
+        //test
+        assertEquals(0,v.getValeur("A"));
+        assertEquals(1,v.getValeur("B"));
+        assertEquals(4,v.getValeur("C"));
+        assertEquals(5,v.getValeur("G"));
+        assertEquals(6,v.getValeur("D"));
+        assertEquals(6,v.getValeur("H"));
+        assertEquals(8,v.getValeur("I"));
+        assertEquals(Double.MAX_VALUE,v.getValeur("E"));
+        assertEquals(Double.MAX_VALUE,v.getValeur("F"));
+        //test des parents
+        assertEquals("A", v.getParent("B"));
+        assertEquals("B", v.getParent("C"));
+        assertEquals("C", v.getParent("H"));
+        assertEquals("B", v.getParent("G"));
+        assertEquals("B", v.getParent("D"));
+        assertEquals("D", v.getParent("I"));
+        //test du backtracking
+        List<String> chemin = new ArrayList<>();
+        chemin.add("I");
+        chemin.add("D");
+        chemin.add("B");
+        chemin.add("A");
+        assertEquals(chemin, v.chemin("I"));
+
+    }
 }
 

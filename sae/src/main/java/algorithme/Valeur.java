@@ -64,7 +64,7 @@ public class Valeur {
      * accede a la valeur associee au noeud nom passe en parametre
      *
      * @param nom nom du noeud
-     * @return la valeur stockee
+     * @return la valeur stockee 
      */
     public double getValeur(String nom) {
         return this.valeur.get(nom);
