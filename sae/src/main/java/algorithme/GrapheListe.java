@@ -30,7 +30,7 @@ public class GrapheListe implements Graphe
     /**
      * permet de recuperer l'indice d'un noeud
      * @param n le noeud
-     * @return l'indice du noeud
+     * @return l'indice du noeud et -1 si le noeud n'est pas present
      */
     public int getIndice(String n)
     {

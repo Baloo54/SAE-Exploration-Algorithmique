@@ -27,7 +27,12 @@ public class Arcs
      */
     public void ajouterArc(Arc a)
     {
-        this.arcs.add(a);
+        if (a != null) {
+            this.arcs.add(a);    
+        }else
+        {
+            throw new IllegalArgumentException("L'arc ne doit pas être nul");
+        }
     }
     /**
      * getter des arcs
