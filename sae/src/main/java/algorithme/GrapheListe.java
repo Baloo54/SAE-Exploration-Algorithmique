@@ -34,7 +34,7 @@ public class GrapheListe implements Graphe
      */
     public int getIndice(String n)
     {
-        return this.getIndice(n);
+        return this.noeuds.indexOf(n);
     }
     /**
      * permet d'ajouter un arc
