@@ -13,7 +13,7 @@ public class Main
         graphe.ajouterArc("D", "B", 23);
         graphe.ajouterArc("D", "C", 10);
         graphe.ajouterArc("C", "A", 19);
-
+        graphe.toString();
     }
     
 }
