@@ -23,9 +23,14 @@ public class Arc
      */
     public Arc(String d, double c)
     {
-        this.dest=d;
-        // on ne veut pas de cout negatif
-        this.cout = c < 0 ? -c : c;
+        if(c < 0 || d == null)
+        {
+            throw new IllegalArgumentException("Le cout doit être positif et la destination non nulle");
+        }else
+        {
+            this.dest = d;
+            this.cout = c;
+        }
     }
     /**
      * getter de la destination
@@ -39,7 +44,10 @@ public class Arc
      * @param dest la destination
      */
     public void setDest(String dest) {
-        this.dest = dest;
+        if(dest == null)
+        {
+            throw new IllegalArgumentException("La destination ne doit pas être nulle");
+        }
     }
     /**
      * getter du cout
@@ -53,7 +61,10 @@ public class Arc
      * @param cout le cout
      */
     public void setCout(double cout) {
-        this.cout = cout;
+        if(cout < 0)
+        {
+            throw new IllegalArgumentException("Le cout doit être positif");
+        }
     }
     /**
      * toString de l'arc
