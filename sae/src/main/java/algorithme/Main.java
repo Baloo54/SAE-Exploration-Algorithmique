@@ -39,5 +39,10 @@ public class Main
         //affichage du résultat
         System.out.print(v);
         System.out.println("\n" + v.chemin("C"));
+        GrapheListes gl = new GrapheListes("resources/Graphes");
+        for(GrapheListe gll : gl.getGraphe()){
+            System.out.println(gll);
+        }
+
     }   
 }
