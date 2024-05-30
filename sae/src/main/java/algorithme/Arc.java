@@ -55,4 +55,12 @@ public class Arc
     public void setCout(double cout) {
         this.cout = cout;
     }
+    /**
+     * toString de l'arc
+     * @return la destination et le cout
+     */
+    public String toString()
+    {
+        return dest + "(" + cout + ")";
+    }
 }
