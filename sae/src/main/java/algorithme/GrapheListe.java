@@ -31,6 +31,7 @@ public class GrapheListe implements Graphe
      * @return 
      * Retourne la liste des noeuds suivants du noeud n
      */
+    @Override
     public List<Arc> suivants(String n)
     {   
         List<Arc> res=this.adjacence.get(getIndice(n)).getArcs();
