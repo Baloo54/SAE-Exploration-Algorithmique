@@ -1,7 +1,6 @@
 package algorithme;
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,22 +33,22 @@ public class GrapheListe implements Graphe
      */
     public List<Arc> suivants(String n)
     {   
-        ArrayList<Arc> res=this.adjacence.get(getIndice(n)).getArcs();
+        List<Arc> res=this.adjacence.get(getIndice(n)).getArcs();
         return res;
     }
 
     /**
      * @return 
-     * @param n
      * Retourne la liste des noeuds du graphe
      */
-    public List<String> listNoeuds(String n)
+    @Override
+    public List<String> listNoeuds()
     {
 
-        ArrayList<String> res = new ArrayList<>();
+        List<String> res = new ArrayList<>();
         for(int i=0; i<this.noeuds.size(); i++)
         {
-            res.add(this.noeuds.get(getIndice(n)));
+            res.add(this.noeuds.get(i));
         }
        
         return res;
