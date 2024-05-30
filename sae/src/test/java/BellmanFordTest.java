@@ -35,6 +35,11 @@ public class BellmanFordTest
         assertEquals(76,v.getValeur("C"));
         assertEquals(66,v.getValeur("D"));
         assertEquals(23,v.getValeur("E"));
+        assertEquals(null, v.getParent("A"));
+        assertEquals("A", v.getParent("B"));
+        assertEquals("D", v.getParent("C"));
+        assertEquals("E", v.getParent("D"));
+        assertEquals("B", v.getParent("E"));
     }
 }
 
