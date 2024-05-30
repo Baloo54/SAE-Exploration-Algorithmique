@@ -12,9 +12,4 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
-    <classpathentry kind="src" path="src/test/java" output="target/test-classes">
-    <attributes>
-       <attribute name="testGrapheListe.java" value="true" />
-    </attributes>
-    </classpathentry>   
 </project>
