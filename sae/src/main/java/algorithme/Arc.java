@@ -1,3 +1,6 @@
+package algorithme;
+
+
 public class Arc
 {
     private String dest;
