@@ -5,7 +5,7 @@ package algorithme;
  * @author Gabriel
  * @version 1.0
  */
-public class BellmanFord 
+public class BellmanFord implements Algorithme
 {
     /**
      * 

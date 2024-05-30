@@ -1,5 +1,7 @@
 package algorithme;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -17,7 +19,7 @@ public class Valeur {
      */
     Map<String, Double> valeur;
     Map<String, String> parent;
-
+    
     /**
      * constructeur vide (initialise la possibilité de stocker des valeurs)
      */
@@ -62,7 +64,7 @@ public class Valeur {
      * accede a la valeur associee au noeud nom passe en parametre
      *
      * @param nom nom du noeud
-     * @return la valeur stockee
+     * @return la valeur stockee 
      */
     public double getValeur(String nom) {
         return this.valeur.get(nom);
@@ -85,7 +87,20 @@ public class Valeur {
             res += s + " ->  V:" + valeurNoeud + " p:" + noeudParent + "\n";
         }
         return res;
-
     }
-
+    /**
+     * fonction qui retourne le chemin entre le noeud de départ et le noeud d'arrivée
+     * @param destination noeud d'arrivée
+     * @return List<String> chemin
+     */
+    public List<String> chemin(String destination){
+        List<String> chemin = new ArrayList<>();
+        String noeud = destination;
+        // tant que le noeud n'est pas null
+        while (noeud != null){
+            chemin.add(noeud);
+            noeud = parent.get(noeud);
+        }
+        return chemin;
+    }
 }

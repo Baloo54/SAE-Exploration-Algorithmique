@@ -32,5 +32,6 @@ public class Main
         v=bf.resoudre(graphe,"A");
         //affichage du résultat
         System.out.print(v);
+        System.out.println("\n" + v.chemin("C"));
     }   
 }
