@@ -4,7 +4,7 @@ package algorithme;
  * @version 1.0
  * @autor : Comte Gabriel
  * @autor : Fuchs Thomas
- * Classe fournie, permet de stocker créer un arc
+ * Permet de stocker créer un arc
  * - un arc est represente par une destination et un cout
 */
 public class Arc
