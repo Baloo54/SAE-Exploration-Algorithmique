@@ -1,8 +1,14 @@
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import algorithme.*;
+
+import algorithme.Algorithme;
+import algorithme.BellmanFord;
+import algorithme.Dijkstra;
+import algorithme.GrapheListe;
+import algorithme.Valeur;
 /**
  * Classe de test permettant de tester les algorithmes de résolution de graphe
  * algorithme de BellmanFord
@@ -67,7 +73,7 @@ public class AlgorithmeTest
         graphe.ajouterArc("B", "C", 3);
         graphe.ajouterArc("B", "G", 4);
         graphe.ajouterArc("B", "D", 5);
-        graphe.ajouterArc("F", "c", 5);
+        graphe.ajouterArc("F", "C", 5);
         graphe.ajouterArc("F", "G", 3);
         graphe.ajouterArc("F", "H", 3);
         graphe.ajouterArc("C", "H", 2);

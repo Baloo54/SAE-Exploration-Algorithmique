@@ -1,17 +1,7 @@
 package algorithme;
 
-/**
- * @version 1.0
- * @autor : Comte Gabriel
- * @autor : Fuchs Thomas
- * Permet de tester le projet
- */
-public class Main 
+public class MainDijkstra 
 {
-    /**
-     * methode principale
-     * @param args
-     */
     public static void main(String[] args) 
     {
         GrapheListe graphe = new GrapheListe();
@@ -27,17 +17,23 @@ public class Main
         //affichage du graphe
         System.out.println("\n" + graphe);
 
-        /********************BELLMAN-FORD***********************/
 
-        //création d'un objet BellmanFord
-        BellmanFord bf = new BellmanFord();
+        /*************************DIJKSTRA*********************/
+        
+        System.out.println();
+        System.out.println();
+
+
+        //objet Dijkstra
+        Dijkstra dijkstra = new Dijkstra();
 
         //plus court chemin
         Valeur v = new Valeur();
-        v=bf.resoudre(graphe,"A");
+        v=dijkstra.resoudre(graphe, "A");
 
-        //affichage du résultat
+        //affichage du resultat
         System.out.print(v);
         System.out.println("\n" + v.chemin("C"));
-    }   
+    }
+    
 }

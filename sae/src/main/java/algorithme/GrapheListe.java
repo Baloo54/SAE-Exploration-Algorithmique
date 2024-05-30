@@ -74,7 +74,13 @@ public class GrapheListe implements Graphe
     @Override
     public List<Arc> suivants(String n)
     {   
-        List<Arc> res=this.adjacence.get(getIndice(n)).getArcs();
+        int indice = getIndice(n);
+        if(indice==-1)
+        {
+            return new ArrayList<>();
+        }
+
+        List<Arc> res=this.adjacence.get(indice).getArcs();
         return res;
     }
     /**
@@ -83,7 +89,7 @@ public class GrapheListe implements Graphe
      */
     @Override
     public List<String> listNoeuds()
-    {
+    {   
         List<String> res = new ArrayList<>();
         // on parcourt la liste des noeuds
         for(int i=0; i<this.noeuds.size(); i++)
