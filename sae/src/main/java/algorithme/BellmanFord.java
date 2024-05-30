@@ -15,7 +15,8 @@ public class BellmanFord
      * 
      * Méthode qui à partir d'un graphe et un point de départ,
      * va retourner le point fixe du plus court chemin de ce même
-     *  graphe en utilisant l'algorithme de Bellman-Ford
+     * graphe en utilisant l'algorithme de Bellman-Ford
+     * L'algorithme se trouve dans le rapport
      */
     public Valeur resoudre(Graphe g, String depart)
     {
@@ -28,7 +29,6 @@ public class BellmanFord
             v.setParent(s, null);
         }
         v.setValeur(depart,0);
-
         boolean b = true;
         //tant qu'il y a des changements
         while(b)
