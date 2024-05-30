@@ -63,4 +63,18 @@ public class Arc
     {
         return dest + "(" + (int)Math.round(cout) + ")";
     }
+    /**
+     * méthode equals
+     * @param o l'objet a comparer
+     * @return true si les objets sont égaux, false sinon
+     */
+    public boolean equals(Object o)
+    {
+        if(o instanceof Arc)
+        {
+            Arc a = (Arc) o;
+            return this.dest.equals(a.getDest()) && this.cout == a.getCout();
+        }
+        return false;
+    }
 }
