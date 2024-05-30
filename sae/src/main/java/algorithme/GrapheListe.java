@@ -44,14 +44,27 @@ public class GrapheListe implements Graphe
      */
     public void ajouterArc(String depart, String destination, double cout)
     {    
-        Arcs arcs = new Arcs();
-        Arc arc = new Arc(destination, cout);
+        //verifie si le noeud n'est pas deja present
+        if(!this.noeuds.contains(depart))
+        {
+            this.noeuds.add(depart);
+            this.adjacence.add(new Arcs());
+            
+        }
+        //verifie si le noeud destination n'est pas deja present 
+        // et permet donc d'afficher tout de même les noeuds sans arcs
+        // sans successeurs
+        else if(!this.noeuds.contains(destination))
+        {
+            this.noeuds.add(destination);
+            this.adjacence.add(new Arcs());
+        }
+        // on recupere l'indice du noeud de depart
+        int i = getIndice(depart);
+        // on cree un arc
+        Arc a = new Arc(destination, cout);
         // on ajoute l'arc a la liste des arcs
-        arcs.ajouterArc(arc);
-        // on ajoute le noeud a la liste des noeuds
-        this.noeuds.add(depart!=null ? depart : null);
-        // on ajoute les arcs a la liste des arcs
-        this.adjacence.add(getIndice(depart),arcs);
+        this.adjacence.get(i).ajouterArc(a);
     }
     /**
      * @param n 
@@ -77,6 +90,8 @@ public class GrapheListe implements Graphe
         {
             res.add(this.noeuds.get(i));
         }
+        //trie les noeuds par ordre alphabetique
+        res.sort(null);
         return res;
     }
     /**
@@ -87,13 +102,15 @@ public class GrapheListe implements Graphe
     {
         String res = "";
         // on parcourt la liste des noeuds
-        for(int i=0; i<this.noeuds.size(); i++)
+        List<String> noeuds = listNoeuds();
+        for(int i=0; i<noeuds.size(); i++)
         {
-            res += this.noeuds.get(i) + " -> ";
-            // on parcourt la liste des arcs
-            for(int j=0; j<this.adjacence.get(i).getArcs().size(); j++)
+            res += noeuds.get(i) + " -> ";
+            // on parcourt la liste des noeuds suivants
+            List<Arc> suivants = suivants(noeuds.get(i));
+            for(int j=0; j<suivants.size(); j++)
             {
-                res += this.adjacence.get(i).getArcs().get(j).toString() + " ";
+                res += suivants.get(j).toString() + " ";
             }
             res += "\n";
         }

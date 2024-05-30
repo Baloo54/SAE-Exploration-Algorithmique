@@ -61,6 +61,6 @@ public class Arc
      */
     public String toString()
     {
-        return dest + "(" + cout + ")";
+        return dest + "(" + (int)Math.round(cout) + ")";
     }
 }
