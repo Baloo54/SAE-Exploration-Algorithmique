@@ -1,9 +1,7 @@
 package algorithme;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.List;
 
 /**
  * Classe fournie, permet de stocker des valeurs associées au noeud et des parents
