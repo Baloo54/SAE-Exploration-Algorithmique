@@ -1,2 +1,58 @@
-Question 8)
-Algorithm de point fixe:
+Question 8 :
+Algorithme de point fixe:
+
+fonction resoudre(Graphe g InOut, Noeud depart)
+
+    Pour chaque noeud n dans g
+        v.setValeur(n, +∞)
+        v.setParent(n, null)
+    FinPour
+
+    v.setValeur(depart, 0)
+
+    fixe <-- vrai
+
+    TantQue fixe
+
+        fixe <--faux
+
+        Pour chaque noeud n dans g
+
+            Pour chaque voisin m de n
+
+                Si v.getValeur(n) + poids(n, m) < v.getValeur(m)
+
+                    v.setValeur(m, v.getValeur(n) + poids(n, m))
+
+                    v.setParent(m, n)
+
+                FinSi
+
+            FinPour
+    
+        FinPour
+
+    FinTantQue
+
+    Retourner v
+
+FinFonction
+
+
+
+Lexique : 
+
+v : Valeur, La classe Valeur est conçue pour représenter les fonctions L(X) et parent(X), où X est un nœud. 
+Elle associe des valeurs réelles et des chaînes de caractères représentant les parents à des nœuds donnés (sous forme de chaînes de caractères).
+C'est également la valeur de retour de la méthode, qui affiche le point minimal.
+
+g : Graphe InOut, il s'agit du graphe qui est passé en paramètre de la méthode résoudre, il contient la liste des noeuds et la liste des couples de valeurs (suivants, cout).
+
+depart : String, représente le sommet de départ du graphe sous forme de chaine de caractères et est initialisé à 0 
+
+n : noeud, represente le noeud courant dans la liste de l'objet graphe g, il est sous forme de chaine de caractères
+
+m : noeud voisin de n, c'est le sommet adjacent qui est directement accessible à partir du noeud n via un arc
+
+poids : int, poids représente la longueur de l'arête qui relie n et m. 
+En java ce n'est pas une fonction, il est implémenté différemment au travers d'un getteur d'un objet de type Arc.
