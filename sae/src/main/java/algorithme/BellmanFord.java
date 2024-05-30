@@ -5,16 +5,32 @@ public class BellmanFord
  
     public Valeur resoudre(Graphe g, String depart)
     {
-        Valeur[] v = new Valeur[g.listNoeuds().size()];
+        Valeur v = new Valeur();
 
-        for(int i =0;i<v.length;i++)
+        for(String s : g.listNoeuds())
         {
-            v[i].setValeur(g.listNoeuds().get(i), Double.MAX_VALUE);
+            v.setValeur(s, Double.MAX_VALUE);
+            v.setParent(s, null);
+        }
+
+        v.setValeur(depart,0);
+
+        while(//TODO)
+        {
+            for(String s : g.listNoeuds())
+            {
+                for(Arc arc : g.suivants(s))
+                {
+                    if()
+                    {
+                        //J'AI PAS FINI
+                    }
+                }
+            }
         }
 
 
-        //todo
-        return null;
+        
 
         
     }
