@@ -135,11 +135,11 @@ public class AlgorithmeTest
     }
 
     @Test
-    public void testResoudre4() //Test avec un graphe qui a un seul noeud
+    public void testResoudre4()//Test avec un graphe qui a un seul arc
     {
         GrapheListe graphe = new GrapheListe();
 
-        graphe.ajouterArc("A","B",1);
+        graphe.ajouterArc("A","B",13);
 
     
         Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
@@ -157,13 +157,14 @@ public class AlgorithmeTest
     }
     
     @Test
-    public void testResoudre5() //Test avec un graphe qui a des noeuds mais pas d'arc
+    public void testResoudre6()//Pattern linéaire
     {
-
         GrapheListe graphe = new GrapheListe();
 
-        graphe.ajouterArc("A", "", 0);
-        graphe.ajouterArc("B", "", 0);
+        graphe.ajouterArc("A", "B", 1);
+        graphe.ajouterArc("B", "C", 1);
+        
+        
 
     
         Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
@@ -173,21 +174,22 @@ public class AlgorithmeTest
         {
             v=Algo.resoudre(graphe, "A");
 
-            assertEquals(null,v.getParent("A"));
-            assertEquals(0, v.getValeur("B"));
-
+            assertEquals(0, v.getValeur("A"));
+            assertEquals(1, v.getValeur("B"));
+            assertEquals(2, v.getValeur("C"));
         }
 
     }
 
     @Test
-    public void testResoudre6()
+    public void testResoudre7()//Pattern Circulaire
     {
         GrapheListe graphe = new GrapheListe();
 
-        graphe.ajouterArc("A", "B", 1);
-        graphe.ajouterArc("B", "C", 1);
-        graphe.ajouterArc("C", "D", 1);
+        graphe.ajouterArc("A", "B", 11);
+        graphe.ajouterArc("B", "C", 3);
+        graphe.ajouterArc("C", "D", 10);
+        graphe.ajouterArc("D", "A", 20);
 
 
     
@@ -202,10 +204,10 @@ public class AlgorithmeTest
             assertEquals("A", v.getParent("B"));
             assertEquals("B", v.getParent("C"));
             assertEquals("C", v.getParent("D"));
-
-
+            assertEquals(null, v.getParent("A"));
 
         }
+
 
     }
 
