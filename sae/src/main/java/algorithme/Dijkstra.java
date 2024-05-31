@@ -45,7 +45,7 @@ public class Dijkstra implements Algorithme
      * 
      * Recherhce du plus court chemin en utilisant L'Algorithme de Bellman-Ford
      */
-    public Valeur resoudre(Graphe g, String depart)
+    public Valeur resoudre(GrapheListe g, String depart)
     {   
 
         Valeur v = new Valeur();

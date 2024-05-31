@@ -13,5 +13,5 @@ public interface Algorithme {
      * @param depart point de départ
      * @return Valeur
      */
-    public Valeur resoudre(Graphe g, String depart);
+    public Valeur resoudre(GrapheListe g, String depart);
 }

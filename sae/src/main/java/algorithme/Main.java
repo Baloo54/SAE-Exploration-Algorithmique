@@ -37,11 +37,5 @@ public class Main
         //plus court chemin
         Valeur v = new Valeur();
         v=bf.resoudre(graphe,"A");
-
-        //affichage du résultat
-        System.out.print(v);
-        System.out.println("\n" + v.chemin("C"));
-        GrapheListes gl = new GrapheListes();
-        ArrayList<GrapheListe> gListes = gl.buildList("sae/src/main/resources/Graphes");
-    }   
+    }
 }

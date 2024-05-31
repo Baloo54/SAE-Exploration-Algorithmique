@@ -18,7 +18,7 @@ public class BellmanFord implements Algorithme
      * graphe en utilisant l'algorithme de Bellman-Ford
      * L'algorithme se trouve dans le rapport
      */
-    public Valeur resoudre(Graphe g, String depart)
+    public Valeur resoudre(GrapheListe g, String depart)
     {
         Valeur v = new Valeur();
         //Initialisation des valeurs de v

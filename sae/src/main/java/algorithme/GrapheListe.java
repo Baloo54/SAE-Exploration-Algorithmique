@@ -10,7 +10,7 @@ import java.util.List;
  * @autor : Fuchs Thomas
  * Permet de stocker un graphe sous forme de liste
  */
-public class GrapheListe implements Graphe
+public class GrapheListe
 {
     /**
      * attributs pour stocker les informations
@@ -19,6 +19,7 @@ public class GrapheListe implements Graphe
      */
     private ArrayList<String> noeuds;
     private ArrayList<Arcs> adjacence;
+    private String firstNode = null;
     /**
      * constructeur vide
      */
@@ -71,7 +72,6 @@ public class GrapheListe implements Graphe
      * @return 
      * Retourne la liste des noeuds suivants du noeud n
      */
-    @Override
     public List<Arc> suivants(String n)
     {   
         int indice = getIndice(n);
@@ -87,7 +87,6 @@ public class GrapheListe implements Graphe
      * @return 
      * Retourne la liste des noeuds du graphe
      */
-    @Override
     public List<String> listNoeuds()
     {   
         List<String> res = new ArrayList<>();
@@ -121,5 +120,21 @@ public class GrapheListe implements Graphe
             res += "\n";
         }
         return res;
+    }
+     /**
+     * methode setFirstNode
+     * @String
+     */
+    public void setFirstNode(String firstNode){
+        this.firstNode = firstNode;
+    }
+    /**
+     * 
+     * méthode qui donne le premier noeud du graphe
+     * @param g
+     * @return String
+     */
+    public String getFirstNode(){
+        return firstNode;
     }
 }
