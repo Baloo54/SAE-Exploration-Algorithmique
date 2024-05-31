@@ -54,7 +54,7 @@ public class GrapheListes {
     /**
      *  fonction qui permet de construire une liste de graphe à partir de fichiers
      */
-    public ArrayList<GrapheListe> biuldList(String folder) {
+    public ArrayList<GrapheListe> buildList(String folder) {
         ArrayList<GrapheListe> graphe = new ArrayList<GrapheListe>();
         List<String> liste = lireDossier(folder);
         for (String file : liste) {
