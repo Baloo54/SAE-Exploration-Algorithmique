@@ -16,26 +16,10 @@ import java.io.File;
  */
 public class GrapheListes {
     /**
-     * Attribut 
-     * Une liste de GrapheListe
-     */
-    private ArrayList<GrapheListe> graphe = new ArrayList<GrapheListe>();
-    /**
-     * Constructeur de la classe GrapheListes
-     * @param folder
-     */
-    public GrapheListes(String folder) {
-        graphe = new ArrayList<GrapheListe>();
-        List<String> liste = lireDossier(folder);
-        for (String file : liste) {
-            lireFichier(file, folder);
-        }
-    }
-    /**
      * fonction qui lit un fichier pour construire un graphe
      * @param file
      */
-    public void lireFichier(String file, String folder) {
+    public void lireFichier(String file, String folder, ArrayList<GrapheListe> graphe) {
         try (BufferedReader bf = new BufferedReader(new FileReader(new File(folder +"/"+ file)))) {
             String line;
             GrapheListe gl = new GrapheListe();
@@ -67,7 +51,14 @@ public class GrapheListes {
             return new ArrayList<String>();
         }
     }
-    public ArrayList<GrapheListe> getGraphe() {
-        return graphe;
+    /**
+     *  fonction qui permet de construire une liste de graphe à partir de fichiers
+     */
+    public ArrayList<GrapheListe> biuldList(String folder) {
+        ArrayList<GrapheListe> graphe = new ArrayList<GrapheListe>();
+        List<String> liste = lireDossier(folder);
+        for (String file : liste) {
+            lireFichier(file, folder ,graphe);
+        }return graphe;
     }
 }
