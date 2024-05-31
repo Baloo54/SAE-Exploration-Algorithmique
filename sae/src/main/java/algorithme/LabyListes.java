@@ -1,6 +1,7 @@
 package algorithme;
 import java.util.*;
 
+/* 
 public class LabyListes implements LabyAlgo
 {
 
@@ -22,3 +23,4 @@ public class LabyListes implements LabyAlgo
 
     
 }
+*/

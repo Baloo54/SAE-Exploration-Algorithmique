@@ -42,6 +42,6 @@ public class Main
         System.out.print(v);
         System.out.println("\n" + v.chemin("C"));
         GrapheListes gl = new GrapheListes();
-        ArrayList<GrapheListe> gListes = gl.biuldList("sae/src/main/resources/Graphes");
+        ArrayList<GrapheListe> gListes = gl.buildList("sae/src/main/resources/Graphes");
     }   
 }

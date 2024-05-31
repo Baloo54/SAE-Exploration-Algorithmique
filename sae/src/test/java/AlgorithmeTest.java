@@ -113,5 +113,103 @@ public class AlgorithmeTest
             assertEquals(chemin, v.chemin("I"));
         }
     }
+
+    @Test
+    public void testResoudre3() //test graphe vide
+    {
+        GrapheListe graphe = new GrapheListe();
+
+    
+        Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
+        Valeur v = new Valeur();
+
+        for(Algorithme Algo : algo)
+        {
+            v=Algo.resoudre(graphe, "A");
+
+            assertEquals(0,v.getValeur("A"));
+            assertEquals(null, v.getParent("A"));
+
+        }
+
+    }
+
+    @Test
+    public void testResoudre4() //Test avec un graphe qui a un seul noeud
+    {
+        GrapheListe graphe = new GrapheListe();
+
+        graphe.ajouterArc("A","B",1);
+
+    
+        Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
+        Valeur v = new Valeur();
+
+        for(Algorithme Algo : algo)
+        {
+            v=Algo.resoudre(graphe, "A");
+
+            assertEquals("B",v.getParent("A"));
+            assertEquals(1, v.getValeur("B"));
+
+        }
+
+    }
+    
+    @Test
+    public void testResoudre5() //Test avec un graphe qui a des noeuds mais pas d'arc
+    {
+
+        GrapheListe graphe = new GrapheListe();
+
+        graphe.ajouterArc("A", "", 0);
+        graphe.ajouterArc("B", "", 0);
+
+    
+        Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
+        Valeur v = new Valeur();
+
+        for(Algorithme Algo : algo)
+        {
+            v=Algo.resoudre(graphe, "A");
+
+            assertEquals(null,v.getParent("A"));
+            assertEquals(0, v.getValeur("B"));
+
+        }
+
+    }
+
+    @Test
+    public void testResoudre6()
+    {
+        GrapheListe graphe = new GrapheListe();
+
+        graphe.ajouterArc("A", "B", 1);
+        graphe.ajouterArc("B", "C", 1);
+        graphe.ajouterArc("C", "D", 1);
+
+
+    
+        Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
+        Valeur v = new Valeur();
+
+        for(Algorithme Algo : algo)
+        {
+            v=Algo.resoudre(graphe, "A");
+
+            assertEquals(null,v.getParent("A"));
+            assertEquals("A", v.getParent("B"));
+            assertEquals("B", v.getParent("C"));
+            assertEquals("C", v.getParent("D"));
+
+
+
+        }
+
+    }
+
+
+
 }
 
