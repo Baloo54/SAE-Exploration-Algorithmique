@@ -36,7 +36,12 @@ public class Arc
      * getter de la destination
      * @return la destination
      */
-    public String getDest() {
+    public String getDest() 
+    {   
+        if(this.dest==null)
+        {
+            throw new IllegalArgumentException("Les ne peut pas être nulle");
+        }
         return dest;
     }
     /**
@@ -53,7 +58,12 @@ public class Arc
      * getter du cout
      * @return le cout
      */
-    public double getCout() {
+    public double getCout()
+    {   
+        if(this.cout<0)
+        {
+            throw new IllegalArgumentException("Le cout ne peut être négatif");
+        }
         return cout;
     }
     /**
