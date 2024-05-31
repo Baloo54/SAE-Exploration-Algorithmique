@@ -60,9 +60,10 @@ public class Dijkstra implements Algorithme
         }
 
         v.setValeur(depart, 0);
-
-        while(!noeudsTraiter.isEmpty())
+        boolean b = true;
+        while(!noeudsTraiter.isEmpty() && b)
         {
+            b = false;
             String u = getMini(noeudsTraiter,v);
             noeudsTraiter.remove(u);
             
@@ -74,6 +75,7 @@ public class Dijkstra implements Algorithme
 
                 if(d < v.getValeur(voisin))
                 {
+                    b = true;
                     v.setValeur(voisin, d);
                     v.setParent(voisin, u);
                 }
@@ -93,7 +95,6 @@ public class Dijkstra implements Algorithme
     {
         String minNoeud = null;
         double minValeur = Double.MAX_VALUE;
-
         for(String noeud : noeuds )
         {
             double valeur = v.getValeur(noeud);
@@ -103,7 +104,6 @@ public class Dijkstra implements Algorithme
                 minNoeud = noeud;
             }
         }
-
         return minNoeud;
     }
 }

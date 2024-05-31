@@ -29,9 +29,9 @@ public class BellmanFord implements Algorithme
             v.setParent(s, null);
         }
         v.setValeur(depart,0);
-        boolean b = true;
         //tant qu'il y a des changements
-        while(b)
+        boolean b = true;
+        while(b == true)
         {   
             b=false;
             //pour chaque noeud

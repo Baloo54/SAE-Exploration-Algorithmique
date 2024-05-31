@@ -2,14 +2,9 @@ package algorithme;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.io.File;
 
 /**
@@ -33,20 +28,20 @@ public class GrapheListes {
         graphe = new ArrayList<GrapheListe>();
         List<String> liste = lireDossier(folder);
         for (String file : liste) {
-            lireFichier(folder+file);
+            lireFichier(file, folder);
         }
     }
     /**
      * fonction qui lit un fichier pour construire un graphe
      * @param file
      */
-    public void lireFichier(String file) {
-        try (BufferedReader bf = new BufferedReader(new FileReader(new File(file)))) {
+    public void lireFichier(String file, String folder) {
+        try (BufferedReader bf = new BufferedReader(new FileReader(new File(folder +"/"+ file)))) {
             String line;
             GrapheListe gl = new GrapheListe();
             while((line = bf.readLine())!=null){
-                String[] LineListe = line.split(" ");
-                gl.ajouterArc((String)LineListe[0], (String)LineListe[1], Double.parseDouble(LineListe[2]));
+                String[] LineListe = line.split("\t");
+                gl.ajouterArc(LineListe[0], LineListe[1], Double.parseDouble(LineListe[2]));
             }
             graphe.add(gl);
         } catch (IOException e) {
@@ -59,15 +54,17 @@ public class GrapheListes {
      * @return List<String>
      */
     public List<String> lireDossier(String dossier){
-        try (Stream<Path> paths = Files.walk(Paths.get(dossier))) {
-        return paths
-            .filter(Files::isRegularFile)
-            .map(Path::getFileName)
-            .map(Path::toString)
-            .collect(Collectors.toList());
-        } catch (IOException e) {
+        try {
+            File folder = new File(dossier);
+            File[] listeOfFile = folder.listFiles();
+            List<String> res = new ArrayList<>();
+            for(File f : listeOfFile){
+                res.add(f.getName());
+            }
+            return res;
+        } catch (Exception e) {
             e.printStackTrace();
-            return new ArrayList<>();
+            return new ArrayList<String>();
         }
     }
     public ArrayList<GrapheListe> getGraphe() {
