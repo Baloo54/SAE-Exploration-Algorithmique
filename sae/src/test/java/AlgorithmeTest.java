@@ -62,7 +62,7 @@ public class AlgorithmeTest
             assertEquals(chemin, v.chemin("C"));
         }
     }
-    //test numéro 2 avec graphe du cours
+    //test numéro 2 avec graphe du cours avec des graphes non pris en compte dans l'algorithme
     @Test
     public void testResoudre2(){
         GrapheListe graphe = new GrapheListe();
@@ -81,7 +81,7 @@ public class AlgorithmeTest
         graphe.ajouterArc("G", "I", 5);
         graphe.ajouterArc("H", "I", 4);
         graphe.ajouterArc("D", "I", 2);
-        //création d'un algorithme BellmanFord puis Dijkstra
+        //création d'un algorithme BellmanFord puis Dijkstra   
         Algorithme [] Algo = {new BellmanFord(), new Dijkstra()};
         Valeur v = new Valeur();
         for(Algorithme algo : Algo){
