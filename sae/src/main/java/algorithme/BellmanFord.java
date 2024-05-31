@@ -42,6 +42,8 @@ public class BellmanFord implements Algorithme
                 {
                     //si la valeur du noeud de destination est plus grande que la valeur du noeud de départ 
                     // + le coût de l'arc
+
+                    //Valeur nulle, qui balance une exception
                     if(v.getValeur(s) + arc.getCout() < v.getValeur(arc.getDest()))
                     {
                         v.setValeur(arc.getDest(), v.getValeur(s)+arc.getCout());
