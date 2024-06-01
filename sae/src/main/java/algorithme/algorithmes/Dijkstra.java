@@ -6,6 +6,12 @@ import algorithme.autres.Valeur;
 import algorithme.graphe.Arc;
 import algorithme.graphe.GrapheListe;
 
+/**
+ * Classe qui permet de résoudre un graphe en utilisant l'algorithme de Dijkstra
+ * @author Thomas
+ * @author Gabriel
+ * @version 1.0
+ */
 public class Dijkstra implements Algorithme
 {
     /**

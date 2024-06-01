@@ -1,10 +1,17 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import algorithme.graphe.GrapheListe;
 
+/**
+ * Classe de tests de la classe GrapheListe
+ * 
+ * @author Gabriel
+ * @author Thomas
+ * @version 1.0
+ */
 public class GrapheListeTest {
     private GrapheListe graphe;
     @BeforeEach

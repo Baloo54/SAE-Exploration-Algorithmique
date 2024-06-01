@@ -1,12 +1,16 @@
 package algorithme.main;
 
-import algorithme.chargerFichiers.*;
 import algorithme.algorithmes.BellmanFord;
 import algorithme.algorithmes.Dijkstra;
 import algorithme.autres.tempsAlgorithme;
+import algorithme.chargerFichiers.GrapheListes;
+import algorithme.chargerFichiers.LabyListes;
 
 /**
  * Class mainTempsAlgorithme qui permet de lancer le calcul du temps d'execution d'un algorithme
+ * @author Gabriel
+ * @author Thomas
+ * @version 1.0
  */
 public class mainTempsAlgorithme {
     public static void main(String[] args) {

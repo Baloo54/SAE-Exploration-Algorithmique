@@ -193,7 +193,7 @@ public class AlgorithmeTest
 
 
     @Test
-    public void testGrapheDeconnecte()
+    public void testGrapheDeconnecte()//test avec des noeuds qui ne sont pas reliés
     {
         GrapheListe graphe = new GrapheListe();
         graphe.ajouterArc("A", "B", 1);
@@ -210,7 +210,7 @@ public class AlgorithmeTest
     }
 
     @Test
-    public void testUnSeulNoeud()
+    public void testUnSeulNoeud()//test avec un seul noeud
     {
         GrapheListe graphe = new GrapheListe();
         graphe.ajouterArc("A", "A", 0);
@@ -223,7 +223,7 @@ public class AlgorithmeTest
     }
 
     @Test
-    public void testValuationNegative()
+    public void testValuationNegative() // Test de la levée d'excpetion quand valuation négative
     {
         GrapheListe graphe = new GrapheListe();
         Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
