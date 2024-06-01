@@ -18,6 +18,9 @@ public class tempsAlgorithme {
      * @param Algo selecteur d'algorithme
      */
     public void calculTemps(buildListe Liste, Algorithme Algo, String folder){
+        if(Liste == null || Algo == null || folder == null){
+            throw new IllegalArgumentException("Les paramètres ne peuvent pas être null");
+        }
         long startTime = System.currentTimeMillis();
         ArrayList<GrapheListe> graphe = Liste.buildList(folder);
         for(GrapheListe g : graphe){
