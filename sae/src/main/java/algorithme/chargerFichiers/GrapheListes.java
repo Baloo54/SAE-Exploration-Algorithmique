@@ -20,6 +20,9 @@ public class GrapheListes  extends buildListe{
      * @param file
      */
     public void lireFichier(String file, String folder, ArrayList<GrapheListe> graphe) {
+        if(folder == null || !folder.equals("Graphes")){
+            throw new IllegalArgumentException("Le dossier n'est pas correct");
+        }
         try (BufferedReader bf = new BufferedReader(new FileReader(new File(folder +"/"+ file)))) {
             String line;
             GrapheListe gl = new GrapheListe();
