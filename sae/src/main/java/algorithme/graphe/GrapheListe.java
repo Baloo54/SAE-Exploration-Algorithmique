@@ -60,7 +60,7 @@ public class GrapheListe
         //verifie si le noeud destination n'est pas deja present 
         // et permet donc d'afficher tout de même les noeuds sans arcs
         // sans successeurs
-        else if(!this.noeuds.contains(destination))
+        if(!this.noeuds.contains(destination))
         {
             this.noeuds.add(destination);
             this.adjacence.add(new Arcs());

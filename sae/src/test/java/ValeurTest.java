@@ -12,6 +12,7 @@ import algorithme.autres.Valeur;
 public class ValeurTest {
     @BeforeEach
     public void setUp() {
+        @SuppressWarnings("unused")
         Valeur v = new Valeur();
     }
     //Test  de setValeur

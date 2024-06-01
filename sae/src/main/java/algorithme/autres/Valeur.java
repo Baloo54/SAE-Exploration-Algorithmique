@@ -36,7 +36,7 @@ public class Valeur {
      */
     public void setValeur(String nom, double valeur) {
         if (nom != null) {
-            this.valeur.put(nom, valeur);
+            this.valeur.put(nom, valeur < 0 ? 0 : valeur);
         }else{
             throw new IllegalArgumentException("Le nom du noeud ne peut pas être null");
         }
@@ -85,7 +85,7 @@ public class Valeur {
         }else if (this.valeur.containsKey(nom)) {
             return this.valeur.get(nom);
         } else {
-            throw new IllegalArgumentException("Le noeud n'a pas de valeur");
+            throw new IllegalArgumentException("Le noeud n'existe pas dans la liste des noeuds stockés");
         }
     }
 

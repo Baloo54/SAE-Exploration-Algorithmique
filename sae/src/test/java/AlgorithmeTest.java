@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 import algorithme.algorithmes.Algorithme;
 import algorithme.algorithmes.BellmanFord;
@@ -19,7 +21,7 @@ import algorithme.graphe.GrapheListe;
 public class AlgorithmeTest 
 {
     /**
-     * Test de la méthode resoudre avec BellmanFord
+     * Test de la méthode resoudre avec BellmanFord et Dijkstra
      */
     @Test
     public void testResoudre()
@@ -117,18 +119,15 @@ public class AlgorithmeTest
     public void testResoudre3() //test graphe vide
     {
         GrapheListe graphe = new GrapheListe();
-
-    
         Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
         Valeur v = new Valeur();
-
         for(Algorithme Algo : algo)
         {
             v=Algo.resoudre(graphe, "A");
-
             assertEquals(0,v.getValeur("A"));
-            assertEquals(null, v.getParent("A"));
-
+            assertThrows(IllegalArgumentException.class, () -> {
+                Algo.resoudre(graphe, "A").getParent("B");
+            });
         }
 
     }
@@ -143,8 +142,9 @@ public class AlgorithmeTest
         for(Algorithme Algo : algo)
         {
             v=Algo.resoudre(graphe, "A");
-            assertEquals("B",v.getParent("A"));
-            assertEquals(1, v.getValeur("B"));
+            assertEquals(0, v.getValeur("A"));
+            assertEquals(13, v.getValeur("B"));
+            assertEquals("A", v.getParent("B"));
         }
     }
 
@@ -152,20 +152,13 @@ public class AlgorithmeTest
     public void testResoudre6()//Pattern linéaire
     {
         GrapheListe graphe = new GrapheListe();
-
         graphe.ajouterArc("A", "B", 1);
         graphe.ajouterArc("B", "C", 1);
-        
-        
-
-    
         Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
         Valeur v = new Valeur();
-
         for(Algorithme Algo : algo)
         {
             v=Algo.resoudre(graphe, "A");
-
             assertEquals(0, v.getValeur("A"));
             assertEquals(1, v.getValeur("B"));
             assertEquals(2, v.getValeur("C"));
@@ -177,34 +170,26 @@ public class AlgorithmeTest
     public void testResoudre7()//Pattern Circulaire
     {
         GrapheListe graphe = new GrapheListe();
-
         graphe.ajouterArc("A", "B", 11);
         graphe.ajouterArc("B", "C", 3);
         graphe.ajouterArc("C", "D", 10);
         graphe.ajouterArc("D", "A", 20);
-
-
-    
         Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
         Valeur v = new Valeur();
-
         for(Algorithme Algo : algo)
         {
             v=Algo.resoudre(graphe, "A");
-
             assertEquals(null,v.getParent("A"));
             assertEquals("A", v.getParent("B"));
             assertEquals("B", v.getParent("C"));
             assertEquals("C", v.getParent("D"));
             assertEquals(null, v.getParent("A"));
-
         }
     }
-    //lance les tests
+    //lancement du test 4
     public static void main(String[] args) {
-        org.junit.jupiter.api.Assertions.assertDoesNotThrow(() -> {
-            new AlgorithmeTest().testResoudre4();
-        });
+        AlgorithmeTest test = new AlgorithmeTest();
+        test.testResoudre4();
     }
 }
 
