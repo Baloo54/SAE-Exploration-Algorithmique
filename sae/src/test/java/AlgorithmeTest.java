@@ -3,9 +3,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import algorithme.algorithmes.Algorithme;
 import algorithme.algorithmes.BellmanFord;
 import algorithme.algorithmes.Dijkstra;
@@ -190,6 +190,59 @@ public class AlgorithmeTest
             assertEquals(null, v.getParent("A"));
         }
     }
+
+
+    @Test
+    public void testGrapheDeconnecte()
+    {
+        GrapheListe graphe = new GrapheListe();
+        graphe.ajouterArc("A", "B", 1);
+        graphe.ajouterArc("C", "D", 1);
+        Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
+        for(Algorithme Algo : algo)
+        {
+            Valeur v = Algo.resoudre(graphe, "A");
+            assertEquals(0, v.getValeur("A"));
+            assertEquals(1, v.getValeur("B"));
+            assertEquals(Double.MAX_VALUE,v.getValeur("C"));
+            assertEquals(Double.MAX_VALUE,v.getValeur("D"));
+        }
+    }
+
+    @Test
+    public void testUnSeulNoeud()
+    {
+        GrapheListe graphe = new GrapheListe();
+        graphe.ajouterArc("A", "A", 0);
+        Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
+        for(Algorithme Algo : algo)
+        {
+            Valeur v = Algo.resoudre(graphe, "A");
+            assertEquals(0, v.getValeur("A"));
+        }
+    }
+
+    @Test
+    public void testValuationNegative()
+    {
+        GrapheListe graphe = new GrapheListe();
+        Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
+        for(Algorithme Algo : algo)
+        {
+            Valeur v = Algo.resoudre(graphe, "A");
+            assertThrows(IllegalArgumentException.class, () -> {
+                graphe.ajouterArc("A", "B", -1);
+                assertEquals(0, v.getValeur("A"));
+                assertEquals(-1, v.getValeur("B"));
+            });
+            
+            
+        }
+    }
+
+    
+
+
     //lancement du test 4
     public static void main(String[] args) {
         AlgorithmeTest test = new AlgorithmeTest();
