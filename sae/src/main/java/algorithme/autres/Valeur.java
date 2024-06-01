@@ -63,11 +63,12 @@ public class Valeur {
      * @return le nom du noeud parent
      */
     public String getParent(String nom) {
-        if (this.parent.containsKey(nom)) {
+        if (nom == null) {
+            throw new IllegalArgumentException("Le noeud ne peut pas être null");
+        }else if (this.parent.containsKey(nom)) {
             return this.parent.get(nom);
         } else {
             throw new IllegalArgumentException("Le noeud n'a pas de parent");
-            
         }
     }
 
@@ -79,7 +80,9 @@ public class Valeur {
      * @return la valeur stockee 
      */
     public double getValeur(String nom) {
-        if (this.valeur.containsKey(nom)) {
+        if (nom == null) {
+            throw new IllegalArgumentException("Le noeud ne peut pas être null");
+        }else if (this.valeur.containsKey(nom)) {
             return this.valeur.get(nom);
         } else {
             throw new IllegalArgumentException("Le noeud n'a pas de valeur");

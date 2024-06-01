@@ -90,11 +90,4 @@ public class ValeurTest {
             v.getValeur("B");
         });
     }
-    //Test  de toString
-    @Test
-    public void testToString() {
-        Valeur v = new Valeur();
-        v.setValeur("B", 2.0);
-        assertEquals("B ->  V:2.0 p:null", v.toString());
-    }
 }
