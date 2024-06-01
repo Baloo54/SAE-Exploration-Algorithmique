@@ -4,6 +4,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import algorithme.algorithmes.Algorithme;
 import algorithme.algorithmes.BellmanFord;
@@ -20,6 +21,11 @@ import algorithme.graphe.GrapheListe;
  */
 public class AlgorithmeTest 
 {
+    private Algorithme[] Algo;
+    @BeforeEach
+    public void setUp() {
+        Algo = new Algorithme[]{new BellmanFord(), new Dijkstra()};
+    }
     /**
      * Test de la méthode resoudre avec BellmanFord et Dijkstra
      */
@@ -36,7 +42,6 @@ public class AlgorithmeTest
         graphe.ajouterArc("D", "C", 10);
         graphe.ajouterArc("C", "A", 19);
         //création d'un algorithme puis Dijkstra
-        Algorithme [] Algo = {new BellmanFord(), new Dijkstra()};
         Valeur v = new Valeur();
         for(Algorithme algo : Algo){
             //résolution du graphe
@@ -83,7 +88,6 @@ public class AlgorithmeTest
         graphe.ajouterArc("H", "I", 4);
         graphe.ajouterArc("D", "I", 2);
         //création d'un algorithme BellmanFord puis Dijkstra   
-        Algorithme [] Algo = {new BellmanFord(), new Dijkstra()};
         Valeur v = new Valeur();
         for(Algorithme algo : Algo){
             //résolution du graphe
