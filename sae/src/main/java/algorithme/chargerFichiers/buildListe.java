@@ -1,4 +1,6 @@
-package algorithme;
+package algorithme.chargerFichiers;
+
+import algorithme.graphe.GrapheListe;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;

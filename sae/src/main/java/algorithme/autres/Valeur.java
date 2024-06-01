@@ -1,4 +1,4 @@
-package algorithme;
+package algorithme.autres;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +35,11 @@ public class Valeur {
      * @param valeur la valeur associée
      */
     public void setValeur(String nom, double valeur) {
-        // modifie valeur
-        this.valeur.put(nom, valeur);
+        if (nom != null) {
+            this.valeur.put(nom, valeur);
+        }else{
+            throw new IllegalArgumentException("Le nom du noeud ne peut pas être null");
+        }
     }
 
     /**
@@ -46,7 +49,11 @@ public class Valeur {
      * @param parent nom du noeud parent associe
      */
     public void setParent(String nom, String parent) {
-        this.parent.put(nom, parent);
+        if (nom != null) {
+            this.parent.put(nom, parent);
+        }else{
+            throw new IllegalArgumentException("Le nom du noeud ne peut pas être null");
+        }
     }
 
     /**
@@ -56,7 +63,12 @@ public class Valeur {
      * @return le nom du noeud parent
      */
     public String getParent(String nom) {
-        return this.parent.get(nom);
+        if (this.parent.containsKey(nom)) {
+            return this.parent.get(nom);
+        } else {
+            throw new IllegalArgumentException("Le noeud n'a pas de parent");
+            
+        }
     }
 
 
@@ -67,13 +79,17 @@ public class Valeur {
      * @return la valeur stockee 
      */
     public double getValeur(String nom) {
-        return this.valeur.get(nom);
+        if (this.valeur.containsKey(nom)) {
+            return this.valeur.get(nom);
+        } else {
+            throw new IllegalArgumentException("Le noeud n'a pas de valeur");
+        }
     }
 
-    /**
-     * retourne une chaine qui affiche le contenu
-     * - par noeud stocke
-     * - a chaque noeud, affiche la valeur puis le noeud parent
+        /**
+         * retourne une chaine qui affiche le contenu
+         * - par noeud stocke
+         * - a chaque noeud, affiche la valeur puis le noeud parent
      *
      * @return descriptif du noeud
      */
@@ -94,6 +110,9 @@ public class Valeur {
      * @return List<String> chemin
      */
     public List<String> chemin(String destination){
+        if (destination == null) {
+            throw new IllegalArgumentException("Le noeud d'arrivée ne peut pas être null");
+        }
         List<String> chemin = new ArrayList<>();
         String noeud = destination;
         // tant que le noeud n'est pas null

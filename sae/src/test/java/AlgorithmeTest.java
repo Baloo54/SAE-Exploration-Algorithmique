@@ -3,12 +3,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-
-import algorithme.Algorithme;
-import algorithme.BellmanFord;
-import algorithme.Dijkstra;
-import algorithme.GrapheListe;
-import algorithme.Valeur;
+import algorithme.algorithmes.Algorithme;
+import algorithme.algorithmes.BellmanFord;
+import algorithme.algorithmes.Dijkstra;
+import algorithme.autres.Valeur;
+import algorithme.graphe.GrapheListe;
 /**
  * Classe de test permettant de tester les algorithmes de résolution de graphe
  * algorithme de BellmanFord
@@ -138,24 +137,17 @@ public class AlgorithmeTest
     public void testResoudre4()//Test avec un graphe qui a un seul arc
     {
         GrapheListe graphe = new GrapheListe();
-
         graphe.ajouterArc("A","B",13);
-
-    
         Algorithme[] algo = {new BellmanFord(), new Dijkstra()};
         Valeur v = new Valeur();
-
         for(Algorithme Algo : algo)
         {
             v=Algo.resoudre(graphe, "A");
-
             assertEquals("B",v.getParent("A"));
             assertEquals(1, v.getValeur("B"));
-
         }
-
     }
-    
+
     @Test
     public void testResoudre6()//Pattern linéaire
     {
@@ -207,11 +199,12 @@ public class AlgorithmeTest
             assertEquals(null, v.getParent("A"));
 
         }
-
-
     }
-
-
-
+    //lance les tests
+    public static void main(String[] args) {
+        org.junit.jupiter.api.Assertions.assertDoesNotThrow(() -> {
+            new AlgorithmeTest().testResoudre4();
+        });
+    }
 }
 

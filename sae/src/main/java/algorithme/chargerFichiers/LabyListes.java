@@ -1,4 +1,6 @@
-package algorithme;
+package algorithme.chargerFichiers;
+
+import algorithme.graphe.GrapheListe;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -58,15 +60,15 @@ public class LabyListes extends buildListe
             boolean first = false;
             for (int x = 0; x < Base.length; x++) {
                 for (int y = 0; y < Base[0].length; y++) {  
-                    if(!first && Base[x][y].equals(".")){
-                        gl.setFirstNode(x + "" + y);
-                        first = true;
-                    }
                     List<String> voisin = getVoisin(x, y, Base);
                     for (String v : voisin) {
                         String[] vSplit = v.split(",");
                         Double cout = Double.parseDouble(vSplit[2]) == 1 ? 1.0 : Double.MAX_VALUE;
                         gl.ajouterArc(vSplit[0], vSplit[1], cout);
+                    }
+                    if(!first && Base[x][y].equals(".")){
+                        gl.setFirstNode(x + "" + y);
+                        first = true;
                     }
                 }
             }

@@ -1,6 +1,7 @@
-package algorithme;
+package algorithme.chargerFichiers;
 
 import java.util.ArrayList;
+import algorithme.graphe.GrapheListe;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -26,11 +27,11 @@ public class GrapheListes  extends buildListe{
             while((line = bf.readLine())!=null){
                 String[] LineListe = line.split("\t");
                 // permet de recuperer le premier noeud
+                gl.ajouterArc(LineListe[0], LineListe[1], Double.parseDouble(LineListe[2]));
                 if(!first){
                     gl.setFirstNode(LineListe[0]);
                     first = true;
                 }
-                gl.ajouterArc(LineListe[0], LineListe[1], Double.parseDouble(LineListe[2]));
             }
             graphe.add(gl);
         } catch (IOException e) {

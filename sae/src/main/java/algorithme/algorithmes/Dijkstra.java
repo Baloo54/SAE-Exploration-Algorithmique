@@ -1,6 +1,10 @@
-package algorithme;
+package algorithme.algorithmes;
 
 import java.util.ArrayList;
+
+import algorithme.autres.Valeur;
+import algorithme.graphe.Arc;
+import algorithme.graphe.GrapheListe;
 
 public class Dijkstra implements Algorithme
 {

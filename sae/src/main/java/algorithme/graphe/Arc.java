@@ -1,4 +1,4 @@
-package algorithme;
+package algorithme.graphe;
 
 /***
  * @version 1.0
@@ -38,10 +38,6 @@ public class Arc
      */
     public String getDest() 
     {   
-        if(this.dest==null)
-        {
-            throw new IllegalArgumentException("Les ne peut pas être nulle");
-        }
         return dest;
     }
     /**
@@ -51,7 +47,10 @@ public class Arc
     public void setDest(String dest) {
         if(dest == null)
         {
-            throw new IllegalArgumentException("La destination ne doit pas être nulle");
+            throw new IllegalArgumentException("La destination ne doit pas être null");
+        }else
+        {
+            this.dest = dest;
         }
     }
     /**
@@ -60,10 +59,6 @@ public class Arc
      */
     public double getCout()
     {   
-        if(this.cout<0)
-        {
-            throw new IllegalArgumentException("Le cout ne peut être négatif");
-        }
         return cout;
     }
     /**
@@ -74,6 +69,9 @@ public class Arc
         if(cout < 0)
         {
             throw new IllegalArgumentException("Le cout doit être positif");
+        }else
+        {
+            this.cout = cout;
         }
     }
     /**

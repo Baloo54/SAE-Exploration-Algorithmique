@@ -1,4 +1,7 @@
-package algorithme;
+package algorithme.algorithmes;
+import algorithme.autres.Valeur;
+import algorithme.graphe.GrapheListe;
+import algorithme.graphe.Arc;
 /**
  * Classe qui permet de résoudre un graphe en utilisant l'algorithme de Bellman-Ford
  * @author Thomas

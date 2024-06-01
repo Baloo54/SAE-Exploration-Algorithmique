@@ -1,5 +1,4 @@
-package algorithme;
-
+package algorithme.graphe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +34,10 @@ public class GrapheListe
      */
     public int getIndice(String n)
     {
+        if(this.noeuds.indexOf(n)==-1)
+        {
+            throw new IllegalArgumentException("Noeud non présent dans le graphe");
+        }
         return this.noeuds.indexOf(n);
     }
     /**
@@ -45,8 +48,10 @@ public class GrapheListe
      */
     public void ajouterArc(String depart, String destination, double cout)
     {    
-        //verifie si le noeud n'est pas deja present
-        if(!this.noeuds.contains(depart))
+        if(depart == null){
+            throw new IllegalArgumentException("Noeud de départ null");   
+        }//verifie si le noeud n'est pas deja present
+        else if(!this.noeuds.contains(depart))
         {
             this.noeuds.add(depart);
             this.adjacence.add(new Arcs());
@@ -75,11 +80,6 @@ public class GrapheListe
     public List<Arc> suivants(String n)
     {   
         int indice = getIndice(n);
-        if(indice==-1)
-        {
-            return new ArrayList<>();
-        }
-
         List<Arc> res=this.adjacence.get(indice).getArcs();
         return res;
     }
@@ -126,7 +126,13 @@ public class GrapheListe
      * @String
      */
     public void setFirstNode(String firstNode){
-        this.firstNode = firstNode;
+        if(firstNode == null){
+            throw new IllegalArgumentException("Noeud de départ null");   
+        }else if(!this.noeuds.contains(firstNode)){
+            throw new IllegalArgumentException("Noeud de départ non présent dans le graphe");
+        }else{
+            this.firstNode = firstNode;
+        }
     }
     /**
      * 

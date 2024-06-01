@@ -1,6 +1,9 @@
-package algorithme;
+package algorithme.autres;
 
+import algorithme.chargerFichiers.*;
 import java.util.ArrayList;
+import algorithme.algorithmes.Algorithme;
+import algorithme.graphe.GrapheListe;
 
 /**
  * Class tempsAlgorithme qui permet de calculer le temps d'execution d'un algorithme
@@ -21,6 +24,6 @@ public class tempsAlgorithme {
             Algo.resoudre(g, g.getFirstNode());
         }
         long endTime = System.currentTimeMillis();
-        System.out.println("Temps d'execution de réolution des différents graphes : " + (endTime - startTime) + "ms");
+        System.out.println("\nTemps d'execution de réolution des différents graphes de type : " + folder + "avec l'algo de :" + Algo.getClass() +" "+ (endTime - startTime) + " ms\n");
     }
 }

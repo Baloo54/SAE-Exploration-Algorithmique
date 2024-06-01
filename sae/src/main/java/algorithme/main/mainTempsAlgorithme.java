@@ -1,4 +1,10 @@
-package algorithme;
+package algorithme.main;
+
+import algorithme.chargerFichiers.*;
+import algorithme.algorithmes.BellmanFord;
+import algorithme.algorithmes.Dijkstra;
+import algorithme.autres.tempsAlgorithme;
+
 /**
  * Class mainTempsAlgorithme qui permet de lancer le calcul du temps d'execution d'un algorithme
  */

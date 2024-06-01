@@ -1,6 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import algorithme.*;
+import algorithme.graphe.Arc;
 /**
  * Test de la classe Arc
  * @version 1.0
@@ -22,7 +22,7 @@ public class ArcTest {
             new Arc("B", -2.0);
         });
     }
-    //Test  création arc avec destination nulle
+    //Test  création arc avec destination null
     @Test
     public void testArcCreationDestinationNulle() {
         assertThrows(IllegalArgumentException.class, () -> {
@@ -58,6 +58,32 @@ public class ArcTest {
         assertThrows(IllegalArgumentException.class, () -> {
             a.setCout(-2.0);
         });
+    }
+    //Test setter cout positif
+    @Test
+    public void testArcSetCoutPositif() {
+        Arc a = new Arc("B", 2.0);
+        a.setCout(3.0);
+        assertEquals(3.0, a.getCout());
+    }
+    //test methode toString
+    @Test
+    public void testArcToString() {
+        Arc a = new Arc("B", 2.0);
+        assertEquals("B(2)", a.toString());
+    }
+    //test setDest valide
+    @Test
+    public void testArcSetDest() {
+        Arc a = new Arc("B", 2.0);
+        a.setDest("C");
+        assertEquals("C", a.getDest());
+    }
+    //test égalité de deux arcs null
+    @Test
+    public void testArcEqualsNull() {
+        Arc a = new Arc("B", 2.0);
+        assertFalse(a.equals(null));
     }
 }
 
