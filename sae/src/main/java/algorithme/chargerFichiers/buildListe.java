@@ -1,4 +1,6 @@
-package algorithme;
+package algorithme.chargerFichiers;
+
+import algorithme.graphe.GrapheListe;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
 public abstract class buildListe
 {
      /**
-     * fonction qui lit un fichier pour construire un graphe
+     * abstract méthode qui lit un fichier pour construire un graphe
      * @param file
      */
     public abstract void lireFichier(String file, String folder, ArrayList<GrapheListe> graphe);

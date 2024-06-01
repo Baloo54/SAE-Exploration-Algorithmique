@@ -1,4 +1,4 @@
-package algorithme;
+package algorithme.graphe;
 
 /**
  * @version 1.0

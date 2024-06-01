@@ -1,5 +1,4 @@
-package algorithme;
-
+package algorithme.graphe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
  * @autor : Fuchs Thomas
  * Permet de stocker un graphe sous forme de liste
  */
-public class GrapheListe implements Graphe
+public class GrapheListe
 {
     /**
      * attributs pour stocker les informations
@@ -19,6 +18,7 @@ public class GrapheListe implements Graphe
      */
     private ArrayList<String> noeuds;
     private ArrayList<Arcs> adjacence;
+    private String firstNode = null;
     /**
      * constructeur vide
      */
@@ -34,6 +34,10 @@ public class GrapheListe implements Graphe
      */
     public int getIndice(String n)
     {
+        if(this.noeuds.indexOf(n)==-1)
+        {
+            throw new IllegalArgumentException("Noeud non présent dans le graphe");
+        }
         return this.noeuds.indexOf(n);
     }
     /**
@@ -44,8 +48,10 @@ public class GrapheListe implements Graphe
      */
     public void ajouterArc(String depart, String destination, double cout)
     {    
-        //verifie si le noeud n'est pas deja present
-        if(!this.noeuds.contains(depart))
+        if(depart == null){
+            throw new IllegalArgumentException("Noeud de départ null");   
+        }//verifie si le noeud n'est pas deja present
+        else if(!this.noeuds.contains(depart))
         {
             this.noeuds.add(depart);
             this.adjacence.add(new Arcs());
@@ -71,15 +77,9 @@ public class GrapheListe implements Graphe
      * @return 
      * Retourne la liste des noeuds suivants du noeud n
      */
-    @Override
     public List<Arc> suivants(String n)
     {   
         int indice = getIndice(n);
-        if(indice==-1)
-        {
-            return new ArrayList<>();
-        }
-
         List<Arc> res=this.adjacence.get(indice).getArcs();
         return res;
     }
@@ -87,7 +87,6 @@ public class GrapheListe implements Graphe
      * @return 
      * Retourne la liste des noeuds du graphe
      */
-    @Override
     public List<String> listNoeuds()
     {   
         List<String> res = new ArrayList<>();
@@ -121,5 +120,27 @@ public class GrapheListe implements Graphe
             res += "\n";
         }
         return res;
+    }
+     /**
+     * methode setFirstNode
+     * @String
+     */
+    public void setFirstNode(String firstNode){
+        if(firstNode == null){
+            throw new IllegalArgumentException("Noeud de départ null");   
+        }else if(!this.noeuds.contains(firstNode)){
+            throw new IllegalArgumentException("Noeud de départ non présent dans le graphe");
+        }else{
+            this.firstNode = firstNode;
+        }
+    }
+    /**
+     * 
+     * méthode qui donne le premier noeud du graphe
+     * @param g
+     * @return String
+     */
+    public String getFirstNode(){
+        return firstNode;
     }
 }

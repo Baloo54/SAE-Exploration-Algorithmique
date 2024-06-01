@@ -1,4 +1,6 @@
-package algorithme;
+package algorithme.algorithmes;
+import algorithme.autres.*;
+import algorithme.graphe.GrapheListe;
 /**
  * Interface qui permet de définir les méthodes que doit implémenter un algorithme
  * de résolution de graphe
@@ -13,5 +15,5 @@ public interface Algorithme {
      * @param depart point de départ
      * @return Valeur
      */
-    public Valeur resoudre(Graphe g, String depart);
+    public Valeur resoudre(GrapheListe g, String depart);
 }

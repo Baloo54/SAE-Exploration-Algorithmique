@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import algorithme.*;
+import algorithme.graphe.Arc;
+import algorithme.graphe.Arcs;
 /**
  * Test de la classe Arcs
  * @version 1.0
